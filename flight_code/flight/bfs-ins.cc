@@ -40,7 +40,6 @@ ImuData *imu_;
 MagData *mag_;
 GnssData *gnss_;
 TFMiniData *tfmini_;
-TFMiniData *tfmini2_;
 bfs::Iir<float> ax_, ay_, az_, gx_, gy_, gz_, hx_, hy_, hz_;
 Eigen::Vector3f accel_mps2_, gyro_radps_, mag_ut_, ned_vel_, rel_pos_ned_;
 Eigen::Vector3d llh_;
@@ -121,7 +120,6 @@ void BfsInsRun(SensorData &ref, InsData * const ptr) {
         if (ref.ext_gnss1.installed) {
           gnss_ = &ref.ext_gnss1;
           tfmini_ = &ref.tfmini;
-          tfmini2_ = &ref.tfmini2;
         } else {
           MsgError("INS GNSS source set to ext GNSS1, which is not installed");
         }
@@ -161,9 +159,9 @@ void BfsInsRun(SensorData &ref, InsData * const ptr) {
       ned_vel_[0] = gnss_->ned_vel_mps[0];
       ned_vel_[1] = gnss_->ned_vel_mps[1];
       ned_vel_[2] = gnss_->ned_vel_mps[2];
-      llh_[0] = float(tfmini_->range_cm) / 100 / 6378137;
-      llh_[1] = 0;
-      llh_[2] = float(tfmini2_->range_cm) / 100;
+      llh_[0] = 0;
+      llh_[1] = float(tfmini_->range_cm) / 100 / 6378137;
+      llh_[2] = 0.1;
       rel_pos_ned_ [0] = float(gnss_->rel_pos_ned_m[0]);
       rel_pos_ned_ [1] = float(gnss_->rel_pos_ned_m[1]);
       rel_pos_ned_ [2] = float(gnss_->rel_pos_ned_m[2]);
@@ -195,9 +193,9 @@ void BfsInsRun(SensorData &ref, InsData * const ptr) {
       ned_vel_[0] = gnss_->ned_vel_mps[0];
       ned_vel_[1] = gnss_->ned_vel_mps[1];
       ned_vel_[2] = gnss_->ned_vel_mps[2];
-      llh_[0] = float(tfmini_->range_cm) / 100 / 6378137;
-      llh_[1] = 0;
-      llh_[2] = float(tfmini2_->range_cm) / 100;
+      llh_[0] = 0;
+      llh_[1] = float(tfmini_->range_cm) / 100 / 6378137;
+      llh_[2] = 0.1;
       rel_pos_ned_ [0] = float(gnss_->rel_pos_ned_m[0]);
       rel_pos_ned_ [1] = float(gnss_->rel_pos_ned_m[1]);
       rel_pos_ned_ [2] = float(gnss_->rel_pos_ned_m[2]);

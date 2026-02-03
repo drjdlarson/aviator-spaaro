@@ -49,9 +49,9 @@ AircraftConfig config = {
     .tfmini = {
       .device = TFMini_MAKERFOCUS
     },
-    .tfmini2 = {
-      .device = TFMini_MAKERFOCUS
-    },
+    // .tfmini2 = {
+    //   .device = TFMini_MAKERFOCUS
+    // },
     .ercf = {
       .device = ERCF_P3America
     },

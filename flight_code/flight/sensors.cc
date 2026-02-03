@@ -60,7 +60,6 @@ SpaaroUbx ext_gnss1(&GNSS_UART);
 #endif
 #if defined(__FMU_R_MINI_V1__)
 SpaaroTFMini tfmini(&GNSS1_UART);
-SpaaroTFMini tfmini2(&GNSS2_UART);
 SpaaroERCF ercf(&AUX_UART);
 // SpaaroAinsteinUsd1 rad_alt(&SBUS_UART);
 #endif
@@ -85,7 +84,6 @@ void SensorsInit(const SensorConfig &cfg) {
   // ext_gnss2.Init(cfg.ext_gnss2);
   // rad_alt.Init(cfg.rad_alt);
   tfmini.Init(cfg.tfmini);
-  tfmini2.Init(cfg.tfmini2);
   ercf.Init(cfg.ercf);
   #endif
   #if defined(__FMU_R_V2__) || defined(__FMU_R_MINI_V1__)
@@ -133,7 +131,6 @@ void SensorsRead(SensorData * const data) {
   data->ext_gnss1.alt_wgs84_m = 0.0f;
   
   tfmini.Read(&data->tfmini);
-  tfmini2.Read(&data->tfmini2);
   ercf.Read(&data->ercf);
   #endif
   #if defined(__FMU_R_V2__) || defined(__FMU_R_MINI_V1__)
