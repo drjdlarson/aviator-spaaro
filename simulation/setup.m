@@ -115,13 +115,12 @@ if (vms_only)
 
     elseif strcmp(vehicle,'torch')
 
-        torch_2dof_done(); % Change this
-        
+        torch_redesign(); % Change this
 
     end
 else
-    if any(strcmp(vehicle, {'super', 'malt', 'lambu'}))
-        multirotor_sim();
+    if any(strcmp(vehicle, {'super', 'malt', 'lambu', 'torch'}))
+        torch_sim();
     elseif any(strcmpi(vehicle, {'ale'}))
         ground_sim();
     elseif any(strcmpi(vehicle, {'session_v0'}))
@@ -133,7 +132,7 @@ end
 
 
 %auto autocode
-% vms_file = 'torch_pos_x_tuner';
+% vms_file = 'torch_redesign';
 % load_system(vms_file);
 % cs = getActiveConfigSet(vms_file);
 % set_param(cs, 'Toolchain', 'MinGW64 | gmake (64-bit Windows)'); % Adjust toolchain as needed

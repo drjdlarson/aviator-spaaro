@@ -22,7 +22,7 @@ else
     throw(ME);
 end
 
-vms_only = true;
+vms_only = false;
 
 
 %% Target trim conditions
