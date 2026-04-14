@@ -9,7 +9,7 @@ Aircraft.name = 'torch';
 
 %% Mass properties (Obtained using Solidworks) CG is at body origin
 % Mass [kg]
-Aircraft.Mass.mass_kg = 0.50;
+Aircraft.Mass.mass_kg = 0.55;
 % c.g. location [m]
 Aircraft.Mass.cg_m = [0 0 0];
 % Moments of inertia [kg*m^2] obtained from Solidworks model
@@ -230,7 +230,8 @@ Aircraft.Control.min_g_thr = 0.1;
 Aircraft.Control.max_tilt_rad = deg2rad(30);
 
 %% Vertical speed controller parameters
-Aircraft.Control.est_hover_thr = 0.45;
+Aircraft.Control.est_hover_thr = 0.445;
+Aircraft.Control.odof_static_fr_range = 0.025;
 % Vertical speed limit [m/s]
 Aircraft.Control.v_z_max = 0.30;
 % Vertical speed controller gain

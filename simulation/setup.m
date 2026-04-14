@@ -120,7 +120,7 @@ if (vms_only)
     end
 else
     if any(strcmp(vehicle, {'super', 'malt', 'lambu', 'torch'}))
-        torch_sim();
+        torch_1dof();
     elseif any(strcmpi(vehicle, {'ale'}))
         ground_sim();
     elseif any(strcmpi(vehicle, {'session_v0'}))
