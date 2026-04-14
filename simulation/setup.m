@@ -115,7 +115,7 @@ if (vms_only)
 
     elseif strcmp(vehicle,'torch')
 
-        torch_redesign(); % Change this
+        torch_zdof(); % Change this
 
     end
 else
@@ -131,14 +131,14 @@ end
 
 
 
-%auto autocode
-% vms_file = 'torch_redesign';
-% load_system(vms_file);
-% cs = getActiveConfigSet(vms_file);
-% set_param(cs, 'Toolchain', 'MinGW64 | gmake (64-bit Windows)'); % Adjust toolchain as needed
-% set_param(vms_file, 'GenerateReport', 'off');
-% set_param(vms_file, 'GenCodeOnly', 'on'); 
-% slbuild(vms_file);
+% auto autocode
+vms_file = 'torch_zdof';
+load_system(vms_file);
+cs = getActiveConfigSet(vms_file);
+set_param(cs, 'Toolchain', 'MinGW64 | gmake (64-bit Windows)'); % Adjust toolchain as needed
+set_param(vms_file, 'GenerateReport', 'off');
+set_param(vms_file, 'GenCodeOnly', 'on'); 
+slbuild(vms_file);
 
 
 %% Cleanup
