@@ -9,7 +9,7 @@ Aircraft.name = 'torch';
 
 %% Mass properties (Obtained using Solidworks) CG is at body origin
 % Mass [kg]
-Aircraft.Mass.mass_kg = 0.3;
+Aircraft.Mass.mass_kg = 0.55;
 % c.g. location [m]
 Aircraft.Mass.cg_m = [0 0 0];
 % Moments of inertia [kg*m^2] obtained from Solidworks model
@@ -69,10 +69,10 @@ Aircraft.Motor.map = [ 1 ; 2 ; 3 ; 4 ];
 
 % Motor positions relative to c.g in [m] [x,y,z](obtained from Solidworks)
 % Motor numbers and order using Arducopter convention
-Aircraft.Motor.pos_m = [0.65    0.65   0;...
-                        -0.65   -0.65    0;...
-                        0.65    -0.65    0;...
-                        -0.65   0.65   0]; 
+Aircraft.Motor.pos_m = [0.07    0.07   0;...
+                        -0.07   -0.07    0;...
+                        0.07    -0.07    0;...
+                        -0.07   0.07   0]; 
 
 % Alignment with body frame x, y, z axis 
 Aircraft.Motor.align = zeros ( Aircraft.Motor.nMotor , 3);
@@ -86,11 +86,11 @@ Aircraft.Motor.dir = [1; 1; -1; -1];
 % The cmd vector [thrust,roll,pitch, yaw] will by multiplied with the motor
 % mixing matrix to result in the individual motor outputs which is then
 % scaled to the PMW range that the ESC can decode
-Aircraft.Motor.mix = [0.9, 0,  0.1, 0;...
-                      0.9,  0, -0.1, 0;...
-                      0.9,  0,  0.1,  0;...
-                      0.9, 0, -0.1,  0;...
-                      0, 0, 0, 0;...
+Aircraft.Motor.mix = [1,  0.25, 0, 0;...
+                      1, -0.25, 0, 0;...
+                      1,  0.25, 0, 0;...
+                      1, -0.25, 0, 0;...
+                      0, 0, 0, 0;...    
                       0, 0, 0, 0;...
                       0, 0, 0, 0;... 
                       0, 0, 0, 0];
@@ -179,10 +179,23 @@ Aircraft.Control.motor_spin_min = 0.15;
 % Prevent motor from spining at max to reduce current draw on the top end
 Aircraft.Control.motor_spin_max = 0.95;
 
+%% Yaw rate controller parameters
+% Max yaw rate [radps]
+Aircraft.Control.yaw_rate_max = deg2rad(180);
+% It's good to limit the maximum yaw rate because excessive yaw rate may
+% cause some motors to slow down too much that hover cannot be maintained
+
+% Yaw rate controller PID gains
+Aircraft.Control.P_yaw_rate = 0.3;
+Aircraft.Control.I_yaw_rate = 0.3;
+Aircraft.Control.D_yaw_rate = 0.01;
+
+% Yaw rate D Controller LPFT cutoff frequency [Hz]
+Aircraft.Control.D_yaw_FLTR_CTOFF = 10;
+
 %% Rate controller parameters
 % Max att rate [radps]
 Aircraft.Control.att_rate_max = deg2rad(220);
-
 % Att rate controller PID gains
 Aircraft.Control.P_att_rate = 0.15;
 Aircraft.Control.I_att_rate = 0.1;
@@ -199,7 +212,7 @@ Aircraft.Control.P_heading = 6;
 
 %% Attitude angle controller parameters
 % Max att angle [rad]
-Aircraft.Control.att_angle_lim = deg2rad(10);  
+Aircraft.Control.att_angle_lim = deg2rad(30);  
 
 % Att cmd controller gains
 Aircraft.Control.P_att_angle = 5;
@@ -214,12 +227,13 @@ Aircraft.Control.max_g_thr = 2;
 Aircraft.Control.min_g_thr = 0.1;
 
 % Max tilt angle
-Aircraft.Control.max_tilt_rad = deg2rad(10);
+Aircraft.Control.max_tilt_rad = deg2rad(30);
 
 %% Vertical speed controller parameters
-Aircraft.Control.est_hover_thr = 0.3;
+Aircraft.Control.est_hover_thr = 0.445;
+Aircraft.Control.odof_static_fr_range = 0.025;
 % Vertical speed limit [m/s]
-Aircraft.Control.v_z_max = 0.25;
+Aircraft.Control.v_z_max = 0.30;
 % Vertical speed controller gain
 Aircraft.Control.P_v_z = 3;
 Aircraft.Control.I_v_z = 0.3;
@@ -231,7 +245,7 @@ Aircraft.Control.D_ver_vel_FLTR_CTOFF = 5;
 
 %% Translational speed controller parameters
 % Horizontal spped limit [m/s]
-Aircraft.Control.v_hor_max = 0.3;
+Aircraft.Control.v_hor_max = 0.5;
 
 % Horizontal speed controller gain
 Aircraft.Control.P_v_hor = 2;
