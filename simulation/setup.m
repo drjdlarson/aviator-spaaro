@@ -45,23 +45,14 @@ run(strcat('./aircraft/', vehicle));
 
 %% Setup FMU
 %% Setup the flight management unit
-if strcmpi(fmu_version, "MINI")
-    Fmu.version = 4;
-    Fmu.NUM_AIN = 8;
-    frameRate_hz = 200;
-    Telem.NUM_FLIGHT_PLAN_POINTS = 500;
-    Telem.NUM_FENCE_POINTS = 100;
-    Telem.NUM_RALLY_POINTS = 10;
-    load('./data/fmu_mini_bus_all_sensors.mat');
-else
-    Fmu.version = 1;
-    Fmu.NUM_AIN = 2;
-    frameRate_hz = 50;
-    Telem.NUM_FLIGHT_PLAN_POINTS = 100;
-    Telem.NUM_FENCE_POINTS = 50;
-    Telem.NUM_RALLY_POINTS = 10;
-    load('./data/fmu_v1_bus_defs.mat');
-end
+Fmu.version = 4;
+Fmu.NUM_AIN = 8;
+frameRate_hz = 200;
+Telem.NUM_FLIGHT_PLAN_POINTS = 500;
+Telem.NUM_FENCE_POINTS = 100;
+Telem.NUM_RALLY_POINTS = 10;
+load('./data/fmu_mini_bus_all_sensors.mat');
+
 framePeriod_s = 1/frameRate_hz;
 
 %% Trim
@@ -110,29 +101,14 @@ end
 
 %% Select sim
 if (vms_only)
-    if strcmp(vehicle,'lambu')
-        lambu();
-
-    elseif strcmp(vehicle,'torch')
-
-        torch_zdof(); % Change this
-
-    end
+    torch_xdof(); % Change this
 else
-    if any(strcmp(vehicle, {'super', 'malt', 'lambu', 'torch'}))
-        torch_1dof();
-    elseif any(strcmpi(vehicle, {'ale'}))
-        ground_sim();
-    elseif any(strcmpi(vehicle, {'session_v0'}))
-        quadplane_sim();
-    end
+    torch_xdof_sim();
 end
-% double_integrator_sim();
-
 
 
 % auto autocode
-vms_file = 'torch_zdof';
+vms_file = 'torch_xdof';
 load_system(vms_file);
 cs = getActiveConfigSet(vms_file);
 set_param(cs, 'Toolchain', 'MinGW64 | gmake (64-bit Windows)'); % Adjust toolchain as needed
