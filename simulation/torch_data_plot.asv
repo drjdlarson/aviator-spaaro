@@ -45,9 +45,9 @@ hold on;
 plot(vms_aux2(30000:end)); %actual v ins
 
 
-
 %{
 findcoef(vms_aux0, vms_aux2, 85000, 9380,10710, Aircraft.Mass.mass_kg, Aircraft.Control.est_hover_thr)
+
 
 function CD = findcoef(thrust, velocity, start, range1, range2, mass, hover)   
     gravity = 9.81 * mass;
