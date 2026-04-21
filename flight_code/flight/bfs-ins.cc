@@ -160,8 +160,8 @@ void BfsInsRun(SensorData &ref, InsData * const ptr) {
       ned_vel_[1] = gnss_->ned_vel_mps[1];
       ned_vel_[2] = gnss_->ned_vel_mps[2];
       llh_[0] = 0;
-      llh_[1] = float(tfmini_->range_cm) / 100 / 6378137;
-      llh_[2] = 0.1;
+      llh_[1] = 0;
+      llh_[2] = float(tfmini_->range_cm) / 100;
       rel_pos_ned_ [0] = float(gnss_->rel_pos_ned_m[0]);
       rel_pos_ned_ [1] = float(gnss_->rel_pos_ned_m[1]);
       rel_pos_ned_ [2] = float(gnss_->rel_pos_ned_m[2]);
@@ -194,8 +194,8 @@ void BfsInsRun(SensorData &ref, InsData * const ptr) {
       ned_vel_[1] = gnss_->ned_vel_mps[1];
       ned_vel_[2] = gnss_->ned_vel_mps[2];
       llh_[0] = 0;
-      llh_[1] = float(tfmini_->range_cm) / 100 / 6378137;
-      llh_[2] = 0.1;
+      llh_[1] = 0;
+      llh_[2] = float(tfmini_->range_cm) / 100;
       rel_pos_ned_ [0] = float(gnss_->rel_pos_ned_m[0]);
       rel_pos_ned_ [1] = float(gnss_->rel_pos_ned_m[1]);
       rel_pos_ned_ [2] = float(gnss_->rel_pos_ned_m[2]);

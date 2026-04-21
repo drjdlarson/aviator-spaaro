@@ -154,8 +154,20 @@ void TelemInit(const TelemConfig &cfg, TelemData * const ptr) {
       MsgInfo("done.\n");
     } else {
       /* Copy parameter data to global defs */
-      // memcpy(ptr->param.data(), param_buf + sizeof(PARAM_STORE_HEADER),
-      //        NUM_TELEM_PARAMS * sizeof(float));
+      for (std::size_t i = 0; i < NUM_TELEM_PARAMS * sizeof(float); i++) {
+        param_buf[i + 3] = 0;
+      }
+      std::size_t i = 3;
+      param_buf[i+4] = 20;      // Z-Position
+      param_buf[i+5] = 10;      // P_vel_outer
+      param_buf[i+6] = 3;       // P_vel_inner
+      param_buf[i+7] = 0.1;     // I_vel_inner
+      param_buf[i+8] = 0.001;   // D_vel_inner
+      param_buf[i+9] = 3;       // P_position
+      param_buf[i+10] = 0.5;    // I_position
+
+      memcpy(ptr->param.data(), param_buf + sizeof(PARAM_STORE_HEADER),
+             NUM_TELEM_PARAMS * sizeof(float));
       /* Update the parameter values in MAV Link */
       telem_.params(ptr->param);
     }
