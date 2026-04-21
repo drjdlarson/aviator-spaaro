@@ -230,7 +230,7 @@ Aircraft.Control.min_g_thr = 0.1;
 Aircraft.Control.max_tilt_rad = deg2rad(30);
 
 %% Vertical speed controller parameters
-aircraft.Control.thrust_coeff = 10.6135;
+Aircraft.Control.thrust_coeff = 10.6135;
 % Vertical speed limit [m/s]
 Aircraft.Control.v_z_max = 0.30;
 % Vertical speed controller gain
