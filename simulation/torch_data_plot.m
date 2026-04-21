@@ -37,23 +37,23 @@ hold on;
 plot(asmooth);
 
 figure;
-plot(vms_aux0(30000:end)); %throttle
+plot(vms_aux0(1:end)); %throttle
 
 figure;
-plot(vms_aux1(30000:end)); %commanded v
+plot(vms_aux1(1     :end)); %commanded v
 hold on;
-plot(vms_aux2(30000:end)); %actual v ins
+plot(vms_aux2(1:end)); %actual v ins
 
 
 
-%{
-findcoef(vms_aux0, vms_aux2, 85000, 9380,10710, Aircraft.Mass.mass_kg, Aircraft.Control.est_hover_thr)
 
-function CD = findcoef(thrust, velocity, start, range1, range2, mass, hover)   
-    gravity = 9.81 * mass;
-    avgthrust = mean(thrust((start+range1):(start+range2))) * gravity/hover;
-    %avgvel = mean(velocity((start+range1):(start+range2)));
-    avgvel = -0.05;
+
+findcoef(vms_aux0, vms_aux2, tfmini_range, 1, 32509, 40648, Aircraft.Mass.mass_kg, aircraft.Control.thrust_coeff)
+
+function CD = findcoef(thrust, velocity, height, start, range1, range2, mass, hover)   
+    avgthrust = mean(thrust((start+range1):(start+range2))) * hover;
+    avgvel = mean(velocity((start+range1):(start+range2)));
+    avgheight = mean(height((start+range1):(start+range2)))/100;
+    gravity = 9.81 * mass + avgheight*.07383;
     CD = (avgthrust - gravity)/avgvel; 
 end
-%}
