@@ -39,17 +39,7 @@ This will autocode the simulink control laws to C++ and compile a build director
 
 After the script has executed (around 5 minutes), AVIATOR will be configured for Z-DOF controls. To begin testflights, unplug the USB cable, power on AVIATOR through the power supply module, and wait for a distinct beep from the ESC signaling all systems have been initialized.
 
-With the telemetry module plugged into the PC, upload the default flight parameters.
-
-``` shell
-./param_init.sh
-```
-
-This will open a MAVLINK proxy with the flight controller via telemetry and upload the params listed in the `params.txt` file. To update a parameter during flight (like flight mode i.e. `PARAM_000`), use the mavlink proxy terminal. The method of changing params mid-flight should primarily be used to change flight modes or position/velocity commands. In case of emergency, do NOT use MAVLINK commands. Instead, use the physical E-stop button located on the side of the platform.
-
-``` shell
-param set PARAM_000 1 #replace 000 with param id
-```
+With the telemetry module plugged into the PC, upload the default flight parameters through MissionPlanner. Connect through the correct COM port and BAUD 57600. Select `CONFIG->Full Parameter List->Load from file` and choose the param file in the main directory. Once the values have been loaded, select `Write from Params` to upload to the drone. The method of changing params mid-flight should only be used to change flight modes or position/velocity commands. In case of emergency, do NOT use MissionPlanner. Instead, use the physical E-stop button located on the side of the platform.
 
 # Data Logging and Visualization
 All flight data is logged to the microSD card aboard the AVIATOR flight controller as a .bfs file. Before converting it to a MATLAB-readable `.mat` file, we need to build the mat_converter tool.
