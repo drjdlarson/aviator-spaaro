@@ -1,4 +1,4 @@
-clc; clear; close all;
+%clc; clear; close all;
 
 file_name = "malt1_213"; % <-- change file number
 
