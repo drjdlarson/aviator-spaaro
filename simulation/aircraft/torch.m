@@ -9,7 +9,7 @@ Aircraft.name = 'torch';
 
 %% Mass properties (Obtained using Solidworks) CG is at body origin
 % Mass [kg]
-Aircraft.Mass.mass_kg = 0.436;
+Aircraft.Mass.mass_kg = 0.42;
 % c.g. location [m]
 Aircraft.Mass.cg_m = [0 0 0];
 % Moments of inertia [kg*m^2] obtained from Solidworks model
