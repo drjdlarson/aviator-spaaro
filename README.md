@@ -55,7 +55,8 @@ Copy the `.bfs` file into the main directory of the repository and run
 ./mat_converter/build/mat_converter <file_name>
 ```
 
-To visualize the flight data in matlab from the generated `.mat` file, open MATLAB and run `torch_data_plot.m` location in the `./simulation` folder.
+Then run `flight_data_parser.m`. Make sure the specify the file location, the output name and location, and the range you wish to save.
+To visualize the flight data, run `setup.m` with vms_only == false. Then run the first section of `sim_vs_flight.m` to load variables for the sim. Finally run the sim and then rerun the MATLAB script.
 
 
 ## Cite

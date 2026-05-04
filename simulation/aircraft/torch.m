@@ -9,7 +9,7 @@ Aircraft.name = 'torch';
 
 %% Mass properties (Obtained using Solidworks) CG is at body origin
 % Mass [kg]
-Aircraft.Mass.mass_kg = 0.55;
+Aircraft.Mass.mass_kg = 0.45;
 % c.g. location [m]
 Aircraft.Mass.cg_m = [0 0 0];
 % Moments of inertia [kg*m^2] obtained from Solidworks model
@@ -86,10 +86,10 @@ Aircraft.Motor.dir = [1; 1; -1; -1];
 % The cmd vector [thrust,roll,pitch, yaw] will by multiplied with the motor
 % mixing matrix to result in the individual motor outputs which is then
 % scaled to the PMW range that the ESC can decode
-Aircraft.Motor.mix = [1,  0.25, 0, 0;...
-                      1, -0.25, 0, 0;...
-                      1,  0.25, 0, 0;...
-                      1, -0.25, 0, 0;...
+Aircraft.Motor.mix = [0.9,  0.25, 0, 0;...
+                      0.9, -0.25, 0, 0;...
+                      0.9,  0.25, 0, 0;...
+                      0.9, -0.25, 0, 0;...
                       0, 0, 0, 0;...    
                       0, 0, 0, 0;...
                       0, 0, 0, 0;... 
@@ -230,7 +230,8 @@ Aircraft.Control.min_g_thr = 0.1;
 Aircraft.Control.max_tilt_rad = deg2rad(30);
 
 %% Vertical speed controller parameters
-Aircraft.Control.est_hover_thr = 0.445;
+Aircraft.Control.est_hover_thr = 0.3;
+Aircraft.Control.thrust_coeff = 10.6135;
 Aircraft.Control.odof_static_fr_range = 0.025;
 % Vertical speed limit [m/s]
 Aircraft.Control.v_z_max = 0.30;
@@ -269,6 +270,6 @@ Aircraft.Control.wp_radius = 0.3;
 Aircraft.Control.P_wp_dist = 1;
 Aircraft.Control.D_wp_dist = 0.7;
 Aircraft.Control.P_dev_dist = 1;
-Aircraft.Control.nav_speed = 0.3;
+Aircraft.Control.nav_speed = 0.5;
 
 
