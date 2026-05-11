@@ -62,12 +62,12 @@ To visualize the flight data in matlab from the generated `.mat` file, open MATL
 
 Please cite the framework as follows
 ```
-    @Misc{lager_spaaro,
-        author       = {Brian Taylor and Jordan D. Larson and Tuan D. Luong and Aabhash Bhandari and Ryan W. Thomas},
+    @Misc{aviator_spaaro,
+        author       = {Brian Taylor and Jordan D. Larson and Arden Markin and Zachary Powers},
         howpublished = {Web page},
-        title        = {{lager_spaaro}: {S}imulink/C++ {P}latform for {A}eronautics and {A}utonomy {R}esearch and {O}perations},
-        year         = {2023},
-        url          = {https://github.com/drjdlarson/lager_spaaro},
+        title        = {{aviator_spaaro}: AVIATOR {S}imulink/C++ {P}latform for {A}eronautics and {A}utonomy {R}esearch and {O}perations},
+        year         = {2026},
+        url          = {https://github.com/drjdlarson/aviator},
     }
 ```
 
