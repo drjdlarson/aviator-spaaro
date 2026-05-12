@@ -1,7 +1,5 @@
-<img src="https://github.com/bolderflight/spaaro/blob/main/docs/img/logo.png" alt="Logo" width="250">
-
-# Simulink/C++ Platform for Aeronautics and Autonomy Research and Operations (SPAARO)
-SPAARO, when coupled with Bolder Flight control systems, enables engineers to quickly research, develop, and deploy control laws, autonomy algorithms, and flight software.
+# Aerial Vehicle Integrated with Adaptable Two- and One-dof Rail's Simulink/C++ Platform for Aeronautics and Autonomy Research and Operations (SPAARO)
+AVIATOR-SPAARO, when coupled with the AVIATOR system, enables aerospace engineering students to design and deploy control laws as flight software.
    * [License](LICENSE.md)
    * [Changelog](CHANGELOG.md)
    * [Contributing guide](CONTRIBUTING.md)
@@ -9,36 +7,14 @@ SPAARO, when coupled with Bolder Flight control systems, enables engineers to qu
 # Overview
 <img src="https://github.com/bolderflight/spaaro/blob/main/docs/img/spaaro.jpg" alt="SPAARO" width="400">
 
-SPAARO and Bolder Flight control systems handle low-level processor startup, timing/scheduling, peripheral drivers, and real-time filtering and estimation. An input / output plane is presented around the flight software, enabling developers to focus on development of control laws, autonomy algorithms, and high-level planning, guidance, and control algorithms. Bolder Flight Systems hardware and software is developed by former NASA and DoD researchers and engineers with a focus on data quality, reliability, and determinism. It is an ideal platform for conducting world-class research and can be rapidly deployed on off-the-shelf or custom commercial flight control systems, enabling businesses to focus on their differentiating technologies and bring products to market at an astonishing speed.
+SPAARO and Bolder Flight control systems handle low-level processor startup, timing/scheduling, peripheral drivers, and real-time filtering and estimation. An input / output plane is presented around the flight software, enabling developers to focus on development of control laws. Bolder Flight Systems hardware and software is developed by former NASA and DoD researchers and engineers with a focus on data quality, reliability, and determinism.
 
-SPAARO supports fixed-wing, multi-rotor, helicopter, and V/STOL vehicles. Software can be developed in Simulink or C++. A Simulink simulation is available for developing and validating algorithms prior to flight. Flight data is converted to MATLAB format for analysis, which can be opened by [MATLAB](https://www.mathworks.com/products/matlab.html), [Octave](https://www.gnu.org/software/octave/index), and [SciPy](https://www.scipy.org/). [MAVLink](https://mavlink.io/) is fully supported for real-time telemetry, in-flight-tunable parameters, flight plans, fences, and rally points. All Bolder Flight control systems are designed and assembled in the United States.
+Software can be developed in Simulink or C++. A Simulink simulation is available for developing and validating algorithms prior to flight. Flight data is converted to MATLAB format for analysis, which can be opened by [MATLAB](https://www.mathworks.com/products/matlab.html), [Octave](https://www.gnu.org/software/octave/index), and [SciPy](https://www.scipy.org/). [MAVLink](https://mavlink.io/) is fully supported for real-time telemetry, in-flight-tunable parameters, flight plans, fences, and rally points. All Bolder Flight control systems are designed and assembled in the United States.
 
 # Flight Control Systems
 
-## FMU-R
-The Research Flight Management Unit (FMU-R) is designed to provide unsurpassed data quality, determinism, and flexibility. FMU-R is ideally suited for early-stage R&D and features a plethora of ports for integrating new peripherals. FMU-R has the option of using a low-cost integrated IMU or adding a VectorNav VN-100, VN-200, or VN-300 IMU/INS. FMU-R can be used stand-alone or a BeagleBone Black or BeagleBone AI can be added for additional compute power; high bandwidth serial and USB connections are available for sharing data between the FMU-R and BeagleBone. FMU-R is designed around a consumer temperature range of 0C to +50C.
-
-An integrated static pressure sensor is available or an external air data sensor can be added to collect differential and static pressure data from a pitot-tube. Multiple pressure ranges are available and sensors can be chained to accommodate 5 or 7 hole probes. Breakout boards are available to convert the JST-GH PWM or SBUS connectors to standard servo headers and have screw terminals for supplying servo rail power. VectorNav, SBUS, and PWM breakout boards can be mounted to the FMU-R for a compact, integrated solution.
-
-### FMU-R v1.x
-
-<img src="https://github.com/bolderflight/spaaro/blob/main/docs/img/fmu-r-v1.png" alt="FMU-R v1" width="400">
-
-FMU-R v1.x consists of:
-   * 50 Hz hard real-time frame rate.
-   * Cortex M4F processor, 180 MHz CPU frequency and a single precision hardware floating point unit.
-   * Integrated voltage regulation with a +6.5V to +36V input range. Clean +5V output up to 2A is available for powering the FMU-R, BeagleBone, and peripherals.
-   * Integrated 9 axis IMU and static pressure sensor.
-   * SBUS input for integrating pilot commands.
-   * 16 channels of SBUS output and 8 channels of PWM output.
-   * Two I2C buses, two UARTs, and one SPI bus for connecting external sensors, such as air data, GNSS receivers, telemetry, and additional IMUs.
-   * Two GPIOs for analog input, digital I/O, or additional PWM channels.
-   * Integrated measurement of input voltage, regulated voltage, and servo rail voltages (up to +9.9V).
-   * Two UARTs from the BeagleBone are brought out to convenient connectors for interfacing with external sensors.
-
-The FMU-R v1.x schematic is [available here](./docs/fmu_r_v1_schematic.pdf).
-
-### FMU-R v2.x
+## FMU-R v2.x
+The Research Flight Management Unit (FMU-R) is designed to provide unsurpassed data quality, determinism, and flexibility. FMU-R is ideally suited for early-stage R&D and features a plethora of ports for integrating new peripherals. FMU-R has the option of using a low-cost integrated IMU or adding a VectorNav VN-100, VN-200, or VN-300 IMU/INS. FMU-R is designed around a consumer temperature range of 0C to +50C.
 
 <img src="https://github.com/bolderflight/spaaro/blob/main/docs/img/fmu-r-v2.png" alt="FMU-R v2" width="400">
 
@@ -55,68 +31,22 @@ FMU-R v2.x consists of:
 
 The FMU-R v2.x schematic is [available here](./docs/fmu_r_v2_schematic.pdf).
 
-### GNSS Receiver
-[uBlox](https://www.u-blox.com/) 8 and 9 series GNSS receivers are supported via the UBX communication protocol. Bolder Flight Systems manufactures a small, low-cost GNSS receiver using the [SAM-M8Q module](https://www.u-blox.com/en/product/sam-m8q-module). If better position accuracy is required, we recommend the [ZED-F9P dual frequency module](https://www.u-blox.com/en/product/zed-f9p-module). [ArduSimple](https://www.ardusimple.com/product/simplertk2blite/) manufactures a small ZED-F9P receiver, which we use frequently with the FMU-R.
-
-<img src="https://github.com/bolderflight/spaaro/blob/main/docs/img/sam-m8q.png" alt="SAM-M8Q GNSS Receiver" width="150">
-
-### Air Data Sensor
-Bolder Flight Systems developed an air data sensor, which uses AMS5915 pressure transducers to measure static and differential pressure. Several pressure ranges are available and can be customized to the vehicle's airspeed range. Additionally, customized sensors can be built to support multi-hole probes for angle of attack and angle of sideslip measurement.
-
-<img src="https://github.com/bolderflight/spaaro/blob/main/docs/img/swift.png" alt="Air Data Sensor" width="200">
-
-### VectorNav IMU/INS
-VectorNav [VN-100](https://www.vectornav.com/products/vn-100), [VN-200](https://www.vectornav.com/products/vn-200), and [VN-300](https://www.vectornav.com/products/vn-300) IMU and INS sensors can be added to the FMU-R. These sensors are temperature calibrated and feature integrated navigation filter algorithms. The VN-200 and VN-300 include integrated GNSS receivers. The VN-300 includes dual GNSS receivers, which can be used to estimate the vehicle heading more accurately than magnetometer based approaches.
-
-### PWM and SBUS Breakouts
-Boards are available to breakout the JST-GH connectors to standard servo connectors. 8 channels are available on each board and the SBUS boards can be daisy-chained for 16 total output channels. Servo power is bused and can be provided by a connected ESC, BEC, or via screw terminals. Servo rail voltage is measured up to +9.9V.
-
-# Hardware Integration
-
-### FMU-R v1.x
-The FMU-R v1.x should be mounted near the vehicle c.g. with the SD card slot accessible, for retrieving flight data, and the micro USB accessible for updating flight software. Orientation of the IMU is shown below - a rotation matrix can be defined in the vehicle configuration to rotate the IMU to the vehicle body frame.
-
-<img src="https://github.com/bolderflight/spaaro/blob/main/docs/img/fmu_r_v1_orientation.PNG" alt="FMU-R v1 Orientation" width="400">
-
-If the BeagleBone is used, ensure accessibility to its mini USB or ethernet connector for uploading software. 2-56 standoffs and screws are supplied with the PWM, SBUS, and VectorNav breakout boards for mounting them to the FMU-R or to the vehicle. 4-40 standoffs and screws are supplied for mounting the FMU-R to the BeagleBone and / or the vehicle.
-
-### FMU-R v2.x
 The FMU-R v2.x should be mounted near the vehicle c.g. with the SD card slot accessible, for retrieving flight data, and the micro USB accessible for updating flight software. Orientation of the IMU is shown below - a rotation matrix can be defined in the vehicle configuration to rotate the IMU to the vehicle body frame.
 
 <img src="https://github.com/bolderflight/spaaro/blob/main/docs/img/fmu_r_v2_orientation.PNG" alt="FMU-R v2 Orientation" width="400">
 
-If the BeagleBone is used, ensure accessibility to its mini USB or ethernet connector for uploading software. 2-56 standoffs and screws are supplied with the PWM, SBUS, and VectorNav breakout boards for mounting them to the FMU-R or to the vehicle. 4-40 standoffs and screws are supplied for mounting the FMU-R to the BeagleBone and / or the vehicle.
+### PWM and SBUS Breakouts
+Boards are available to breakout the JST-GH connectors to standard servo connectors. 8 channels are available on each board and the SBUS boards can be daisy-chained for 16 total output channels. Servo power is bused and can be provided by a connected ESC, BEC, or via screw terminals. Servo rail voltage is measured up to +9.9V.
 
 #### Power Module
 A PX4 compatible power module should be used to supply power to the FMU-R v2.x and will also supply battery voltage, current, and capacity information. Ensure the power module will meet your anticipated power system voltage and current draw.
 
-### GNSS Receiver
-The SAM-M8Q includes an integrated patch antenna and should be mounted on top of the vehicle or under materials that would pass through GNSS frequencies (i.e. underneath monokote). The ZED-F9P uses an external antenna, the receiver can be mounted where convenient and the antenna would have the same restrictions as the SAM-M8Q.
-
 2-56 standoffs and screws are supplied with the SAM-M8Q for mounting the GNSS receiver to the vehicle.
-
-Prior to installing the GNSS receiver, it must be configured in the uBlox u-center application. The following packets must be enabled on the receiver:
-   * UBX-NAV-PVT
-   * UBX-NAV-DOP
-   * UBX-NAV-EOE
-
-Optionally, if it's available, the following packet should be enabled for higher precision navigation:
-   * UBX-NAV-HPPOSLLH
-
-You should also use u-center to configure the navigation solution and transmission rate, the baud rate for the serial interface, expected operation environment (i.e. stationary, airborne, etc), and any corrections (RTK or CORS network). We recommend a solution rate of 5 Hz, the highest baud rate available (typically 921600) and an airborne operation environment.
-
-### Air Data Sensor
-If the air data sensor is used, we recommend mounting it near where the pitot-tub attaches to the aircraft to minimize pneumatic lag from long pressure lines. Silicon tubing with an inner diameter of 2mm and an outer diameter of 6mm is recommended; however, this is difficult to find in the United States. Tygon tubing with an inner diameter of 1/16" is relatively easy to find and works well for short tubing runs and connecting to the AMS5915 sensor. Longer runs, such as cases where the air data sensor cannot be mounted near the pitot-tube, should step the tubing up to a larger diameter to reduce losses. McMaster-Carr is a good source for pressure tubing, T and elbow connectors, and step-up connectors.
-
-2-56 standoffs and screws are supplied with the air data sensor for mounting it to the vehicle.
 
 ## Electrical connections
 JST-GH cables are supplied with each of the components.
-   * The GNSS receiver and telemetry modules should be connected to the FMU-UART ports.
-   * The air data sensor should be connected to one of the I2C ports.
    * The PWM and SBUS breakouts should be connected to the PWM and SBUS-TX ports, respectively.
    * An SBUS receiver should be connected to the SBUS-RX port.
-   * If a VectorNav IMU/INS is used, it should be connected to the SPI port.
    * Power should be connected to the FMU-R PWR screw terminal. Typically this would be wired in parallel with the main aircraft battery so voltage could be monitored in flight. Supported voltage range is +6.5V to +36V.
    * Servo power should be supplied by either an ESC, BEC, or via the screw terminal on the PWM or SBUS breakout boards. Ensure that servo voltage does not exceed +9.9V.
 
@@ -188,9 +118,6 @@ AircraftConfig config = {
 ## Sensors
 *.sensor* configures the aircraft sensors.
 
-### Pitot-Static Installed
-The first configurable item is whether an air data sensor is installed and should be used for static and differential pressure sensing. This is simply a boolean *true* (air data sensor installed), *false* (air data sensor not installed).
-
 ```C++
 /* Pitot static sensor not installed */
 .sensor = {
@@ -210,8 +137,6 @@ y = c * x + b
 Where *y* is the corrected sensor output, *c* is the scale factor matrix, *x* is the uncorrected sensor output, and *b* is the bias vector. An ideal sensor would have a bias vector of zeros and an identity scale factor matrix.
 
 We typically estimate accelerometer bias and scale factor by collecting data on the FMU-R with each axis aligned with gravity in a positive and negative sense. We then fit the bias and scale factor such that we get a magnitude in each axis of 9.80665.
-
-The magnetometer is typically calibrated in vehicle with the electronics powered and the motors off since we usually only use the magnetometer to initialize the aircraft heading for the navigation filters. The aircraft is rotated in a sphere for all three axes and in post-processing we estimate the bias and scale factors necessary to fit the magnetometer data to a sphere.
 
 A rotation matrix can be defined to rotate the IMU into the vehicle frame. The rotation matrix is defined such that:
 
@@ -236,74 +161,26 @@ An example IMU configuration is:
 },
 ```
 
-### GNSS
-The *.gnss* struct configures the GNSS receiver. The configurable items are the sampling period, in ms, the baud rate, and the serial bus the receiver is connected to. Below is an example configuration of a receiver connected to FMU-UART3, with a baud rate of 921600, and an update rate of 5 Hz.
-
-```C++
-.gnss = {
-  .sampling_period_ms = 200,  // 5 Hz
-  .baud = 921600,
-  .bus = &Serial3
-},
-```
-
-### Static Pressure
-The *.static_pres* struct configures the static pressure sensor. If an air data sensor is not used, all of the items are defined in */flight_code/include/flight/hardware_defs.h* and should not be modified.
-
-```C++
-.static_pres = {
-  .dev = PRES_CS,
-  .sampling_period_ms = FRAME_PERIOD_MS,
-  .bus = &PRES_SPI_BUS
-},
-```
-
-If an air data sensor is used, configurable items include the I2C bus, I2C address, and transducer type. Typically the AMS1200B is used as a static pressure sensor.
-
-```C++
-.static_pres = {
-  .dev = 0x10,
-  .transducer = bfs::AMS5915_1200_B,
-  .sampling_period_ms = FRAME_PERIOD_MS,
-  .bus = &PRES_I2C_BUS
-},
-```
-
-### Differential Pressure
-The *.diff_pres* struct configures the differential pressure sensor. Configurable items include the I2C bus, I2C address, and transducer type. Typically the AMS1200B is used as a static pressure sensor.
-
-```C++
-.diff_pres = {
-  .dev = 0x11,
-  .transducer = bfs::AMS5915_0010_D,
-  .sampling_period_ms = FRAME_PERIOD_MS,
-  .bus = &PRES_I2C_BUS
-},
-```
-
 ## Navigation Filter
 The *.nav* struct configures the navigation filter. 
 
 Data flow from the sensor is:
 1. Anti-alias filtering is applied, if available, based on the FMU sample rate.
-2. Bias and scale factor corrections are applied. For the accelerometer and magnetometer, these are defined in the sensor configuration. For the gyro and differential pressure sensor, biases are estimated on startup.
+2. Bias and scale factor corrections are applied. For the accelerometer, these are defined in the sensor configuration. For the gyro, biases are estimated on startup.
 3. The IMU is rotated into the vehicle frame.
 
 This process yields the sensor data that is output. In the navigation filter:
 1. An Extended Kalman Filter (EKF) uses IMU and GNSS data to estimate vehicle position, velocity, attitude, and accelerometer and gyro biases.
 2. Accelerometer and gyro biases are removed.
-3. Digital low pass filters are applied to the IMU and pressure transducer data.
-4. This data is used to estimate derived quantities, such as pressure altitude, airspeed, NED position, etc.
+3. Digital low pass filters are applied to the IMU data.
+4. This data is used to estimate derived quantities, such as pressure altitude, NED position, etc.
 
-Configurable items include the accelerometer, gyro, mag, static pressure, and differential pressure digital low pass filter cutoff frequencies. An example *nav* configuration is:
+Configurable items include the accelerometer and gyro. An example *nav* configuration is:
 
 ```C++
 .nav = {
   .accel_cutoff_hz = 20,
-  .gyro_cutoff_hz = 20,
-  .mag_cutoff_hz = 10,
-  .static_pres_cutoff_hz = 10,
-  .diff_pres_cutoff_hz = 10
+  .gyro_cutoff_hz = 20
 },
 ```
 
@@ -337,10 +214,7 @@ On boot, SPAARO initializes the:
    * Setting up the analog to digital converters for monitoring system voltages
 3. Sensors, which includes:
    * IMU: establish communications, configure the IMU, and estimate gyro biases.
-   * GNSS: establish communications.
    * Inceptors: establish communications.
-   * Pressure transducers: establish communications, configure the pressure transducers, and estimate differential pressure biases.
-   * Battery monitoring (FMU-R v2.x): measures battery voltage and current, estimates battery capacity remaining and remaining flight time.
    * Analog: measures analog inputs, converts to engineering units.
 4. Effectors, which establishes communications over SBUS and PWM protocols.
 5. Telemetry, which establishing communications with the radio modem.
@@ -362,7 +236,7 @@ A timer to send commands to the effectors is started by the main flight software
 This process continues until the system is powered down.
 
 # Developing Software
-Software for SPAARO can be developed in C++ or autocoded from Simulink. The input plane has the following data available:
+Software for AVIATOR-SPAARO can be developed in C++ or autocoded from Simulink. The input plane has the following data available:
 
    * System Data:
       * int32_t frame_time_us: time the previous frame took to complete, us. Useful for analyzing CPU load.
@@ -568,18 +442,16 @@ Software can be uploaded with:
 make flight_upload
 ```
 
-
-
 ## Cite
 
 Please cite the framework as follows
 ```
     @Misc{lager_spaaro,
-        author       = {Brian Taylor and Jordan D. Larson and Tuan D. Luong and Aabhash Bhandari and Ryan W. Thomas},
+        author       = {Jordan D. Larson and Arden Markin and Zachary Powers},
         howpublished = {Web page},
-        title        = {{lager_spaaro}: {S}imulink/C++ {P}latform for {A}eronautics and {A}utonomy {R}esearch and {O}perations},
+        title        = {{AVIATOR-SPAARO}: {A}erial {V}ehicle {I}ntegrated with {A}daptable {T}wo- and {O}ne-dof {R}ail's {S}imulink/C++ {P}latform for {A}eronautics and {A}utonomy {R}esearch and {O}perations},
         year         = {2023},
-        url          = {https://github.com/drjdlarson/lager_spaaro},
+        url          = {https://github.com/drjdlarson/aviator-spaaro},
     }
 ```
 
