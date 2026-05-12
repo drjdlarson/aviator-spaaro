@@ -1,5 +1,5 @@
-# Aerial Vehicle Integrated with Adaptable Two- and One-dof Rail's Simulink/C++ Platform for Aeronautics and Autonomy Research and Operations (SPAARO)
-AVIATOR-SPAARO, when coupled with the AVIATOR system, enables aerospace engineering students to design and deploy control laws as flight software.
+# Aerial Vehicle Integrated with Adaptable Two- and One-dof Rail's Simulink/C++ Platform for Aeronautics and Autonomy Research and Operations (AVIATOR-SPAARO)
+AVIATOR-SPAARO when coupled with the AVIATOR system and Bolder Flight System's flight computer enables aerospace engineering students to design and deploy control laws as flight software.
    * [License](LICENSE.md)
    * [Changelog](CHANGELOG.md)
 
