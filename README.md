@@ -2,10 +2,8 @@
 AVIATOR-SPAARO, when coupled with the AVIATOR system, enables aerospace engineering students to design and deploy control laws as flight software.
    * [License](LICENSE.md)
    * [Changelog](CHANGELOG.md)
-   * [Contributing guide](CONTRIBUTING.md)
 
 # Overview
-<img src="https://github.com/bolderflight/spaaro/blob/main/docs/img/spaaro.jpg" alt="SPAARO" width="400">
 
 SPAARO and Bolder Flight control systems handle low-level processor startup, timing/scheduling, peripheral drivers, and real-time filtering and estimation. An input / output plane is presented around the flight software, enabling developers to focus on development of control laws. Bolder Flight Systems hardware and software is developed by former NASA and DoD researchers and engineers with a focus on data quality, reliability, and determinism.
 
